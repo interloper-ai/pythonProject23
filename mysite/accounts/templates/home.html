@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .header { display: flex; justify-content: space-between; padding: 10px; background-color: #f4f4f4; }
+        .header a { text-decoration: none; color: blue; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            {% if user.is_authenticated %}
+                Привет, {{ user.username }}!
+                <a href="{% url 'logout' %}">Выйти</a>
+                <a href="{% url 'stream' %}">Начать стрим</a>  <!-- Кнопка для стриминга -->
+            {% else %}
+                <a href="{% url 'register' %}">Зарегистрироваться</a>
+                <a href="{% url 'login' %}">Войти</a>
+            {% endif %}
+        </div>
+    </div>
+    <h1>Добро пожаловать на главную страницу!</h1>
+</body>
+</html>

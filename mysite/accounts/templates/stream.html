@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стриминг</title>
+</head>
+<body>
+    <h2>Демонстрация экрана</h2>
+    <button id="startStream">Начать трансляцию</button>
+    <video id="video" width="640" height="480" autoplay></video>
+
+    <script>
+        const startStreamButton = document.getElementById("startStream");
+        const video = document.getElementById("video");
+
+        startStreamButton.addEventListener("click", async () => {
+            try {
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                video.srcObject = stream;
+
+                // Здесь можно добавить код для отправки данных стрима на сервер
+                // Для простоты мы не будем реализовывать полноценный серверный стриминг в этом примере
+            } catch (err) {
+                console.error("Ошибка при попытке начать стрим:", err);
+            }
+        });
+    </script>
+</body>
+</html>
